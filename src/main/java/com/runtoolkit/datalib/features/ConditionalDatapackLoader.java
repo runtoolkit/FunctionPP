@@ -19,16 +19,9 @@ public class ConditionalDatapackLoader {
 
     private static void onServerStart(MinecraftServer server) {
         LOGGER.info("Checking conditional datapack requirements...");
-        
-        // Check world border radius
         conditionChecker.checkWorldBorder(server);
-        
-        // Check difficulty level
         conditionChecker.checkDifficulty(server);
-        
-        // Check enabled features/experiments
         conditionChecker.checkExperimentalFeatures(server);
-        
         LOGGER.info("Conditional datapack loading completed");
     }
 

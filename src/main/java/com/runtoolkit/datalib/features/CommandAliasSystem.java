@@ -1,10 +1,10 @@
 package com.runtoolkit.datalib.features;
 
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
-import net.minecraft.command.CommandRegistryAccess;
-import net.minecraft.server.command.ServerCommandSource;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.Text;
 
 /**
  * Feature 1: Command Alias System
@@ -25,7 +25,7 @@ public class CommandAliasSystem {
             .requires(source -> source.hasPermissionLevel(2))
             .executes(context -> {
                 context.getSource().sendFeedback(
-                    () -> net.minecraft.text.Text.literal("§6Datapack Alias System - Type /dalias help"),
+                    () -> Text.literal("§6Datapack Alias System - Type /dalias help"),
                     false
                 );
                 return 1;

@@ -19,7 +19,6 @@ public class AdvancedFunctionBuilder {
     }
 
     private static void onServerTick(MinecraftServer server) {
-        // Execute queued functions
         executor.executeQueuedFunctions(server);
     }
 

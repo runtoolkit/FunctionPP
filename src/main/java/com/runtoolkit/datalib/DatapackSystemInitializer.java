@@ -8,21 +8,32 @@ import com.runtoolkit.datalib.features.ConditionalDatapackLoader;
  * Initializes all three datapack system features
  */
 public class DatapackSystemInitializer {
+    private static final org.slf4j.Logger LOGGER = org.slf4j.LoggerFactory.getLogger("DatapackSystemInitializer");
+
     public static void initializeAllFeatures() {
-        DatapackSystemMod.LOGGER.info("Initializing all datapack system features...");
+        LOGGER.info("Initializing all datapack system features...");
         
-        // Initialize Feature 1: Command Alias System
-        CommandAliasSystem.register();
-        DatapackSystemMod.LOGGER.info("✓ Command Alias System initialized");
+        try {
+            CommandAliasSystem.register();
+            LOGGER.info("✓ Command Alias System initialized");
+        } catch (Exception e) {
+            LOGGER.error("Failed to initialize Command Alias System", e);
+        }
         
-        // Initialize Feature 2: Conditional Datapack Loader
-        ConditionalDatapackLoader.register();
-        DatapackSystemMod.LOGGER.info("✓ Conditional Datapack Loader initialized");
+        try {
+            ConditionalDatapackLoader.register();
+            LOGGER.info("✓ Conditional Datapack Loader initialized");
+        } catch (Exception e) {
+            LOGGER.error("Failed to initialize Conditional Datapack Loader", e);
+        }
         
-        // Initialize Feature 3: Advanced Function Builder
-        AdvancedFunctionBuilder.register();
-        DatapackSystemMod.LOGGER.info("✓ Advanced Function Builder initialized");
+        try {
+            AdvancedFunctionBuilder.register();
+            LOGGER.info("✓ Advanced Function Builder initialized");
+        } catch (Exception e) {
+            LOGGER.error("Failed to initialize Advanced Function Builder", e);
+        }
         
-        DatapackSystemMod.LOGGER.info("All datapack system features are ready!");
+        LOGGER.info("All datapack system features are ready!");
     }
 }

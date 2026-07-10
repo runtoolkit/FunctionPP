@@ -1,7 +1,6 @@
 package com.runtoolkit.datalib.features;
 
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.math.BlockPos;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,10 +34,5 @@ public class DatapackConditionChecker {
         } catch (Exception e) {
             LOGGER.error("Error checking experimental features", e);
         }
-    }
-
-    public boolean isConditionMet(String conditionName, Object expectedValue) {
-        // This would be expanded to support custom conditions
-        return true;
     }
 }

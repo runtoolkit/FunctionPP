@@ -24,7 +24,6 @@ public class FunctionExecutor {
         QueuedFunction queued = functionQueue.peek();
         if (queued != null && queued.isReadyToExecute()) {
             try {
-                // Execute the function
                 LOGGER.info("Executing queued function: {}", queued.getFunctionName());
                 functionQueue.poll();
             } catch (Exception e) {
@@ -39,19 +38,17 @@ public class FunctionExecutor {
 
     private static class QueuedFunction {
         private final String functionName;
-        private final long delayTicks;
         private final long createdTime;
+        private final long delayMs;
 
         public QueuedFunction(String functionName, long delayTicks) {
             this.functionName = functionName;
-            this.delayTicks = delayTicks;
+            this.delayMs = delayTicks * 50;
             this.createdTime = System.currentTimeMillis();
         }
 
         public boolean isReadyToExecute() {
-            long elapsedMs = System.currentTimeMillis() - createdTime;
-            long delayMs = delayTicks * 50; // 1 tick = 50ms
-            return elapsedMs >= delayMs;
+            return System.currentTimeMillis() - createdTime >= delayMs;
         }
 
         public String getFunctionName() {

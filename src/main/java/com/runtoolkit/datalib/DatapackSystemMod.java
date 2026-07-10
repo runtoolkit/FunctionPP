@@ -12,10 +12,6 @@ public class DatapackSystemMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Datalib Mod initialized for Minecraft 1.20.1");
-        
-        // Register datapack system event listeners
-        ServerLifecycleEvents.SERVER_STARTED.register(server -> {
-            LOGGER.info("Server started - Datapack System Features activated");
-        });
+        DatapackSystemInitializer.initializeAllFeatures();
     }
 }
